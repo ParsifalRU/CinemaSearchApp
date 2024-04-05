@@ -1,21 +1,18 @@
-@file:Suppress("DSL_SCOPE_VIOLATION")
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.android.kotlin)
 }
 
 android {
-    namespace = "dev.ivan_belyaev.cinemasearchapp"
+    namespace = "dev.ivan_belyaev.core_implementation"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "dev.ivan_belyaev.cinemasearchapp"
         minSdk = 28
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -34,33 +31,20 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
-    implementation(project(":celebrity:core"))
-    implementation(project(":celebrity:core_impl"))
-    implementation(project(":celebrity:core_factory"))
 
+    implementation(project(":celebrity:core"))
+
+    implementation(libs.javax.inject)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.retrofit)
     implementation(libs.retrofit2.converter.gson2)
     implementation(libs.logging.interceptor)
-    implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.dagger)
     implementation(libs.dagger.compiler)
-    implementation(libs.javax.inject)
+    implementation(libs.androidx.core.ktx)
 
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 
 }
