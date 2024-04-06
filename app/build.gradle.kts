@@ -44,6 +44,7 @@ dependencies {
     implementation(project(":celebrity:core"))
     implementation(project(":celebrity:core_impl"))
     implementation(project(":celebrity:core_factory"))
+    implementation(project(":celebrity:network"))
 
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.retrofit)
