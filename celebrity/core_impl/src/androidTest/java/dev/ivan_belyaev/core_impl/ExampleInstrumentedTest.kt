@@ -1,4 +1,4 @@
-package dev.ivan_belyaev.core_implementation
+package dev.ivan_belyaev.core_impl
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

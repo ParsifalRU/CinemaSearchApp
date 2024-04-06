@@ -1,4 +1,4 @@
-package dev.ivan_belyaev.core_implementation
+package dev.ivan_belyaev.core_impl
 
 import org.junit.Test
 

@@ -1,7 +1,8 @@
-@file:Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.android.kotlin)
+    id("kotlin-kapt")
+    id("org.jetbrains.kotlinx.kover") version "0.7.6" apply true
 }
 
 android {
@@ -48,19 +49,15 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit2.converter.gson2)
     implementation(libs.logging.interceptor)
-    implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+
     implementation(libs.dagger)
-    implementation(libs.dagger.compiler)
     implementation(libs.javax.inject)
-
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-
+    kapt(libs.dagger.compiler)
+    kapt("com.google.dagger:dagger-android-processor:2.47")
 }

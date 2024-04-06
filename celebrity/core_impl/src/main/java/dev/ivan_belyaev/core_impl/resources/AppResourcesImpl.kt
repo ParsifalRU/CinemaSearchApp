@@ -1,4 +1,4 @@
-package dev.ivan_belyaev.core_implementation.resources
+package dev.ivan_belyaev.core_impl.resources
 
 import android.app.Application
 import android.content.res.ColorStateList

@@ -15,6 +15,7 @@ import javax.inject.Singleton
     ],
     modules = [
         ViewModelFactoryModule::class,
+        ScreensBinding::class,
     ]
 )
 internal interface ApplicationComponent : ApplicationProvider {

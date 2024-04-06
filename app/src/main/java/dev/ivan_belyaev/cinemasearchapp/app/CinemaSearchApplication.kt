@@ -5,7 +5,7 @@ import dev.ivan_belyaev.cinemasearchapp.di.ApplicationComponent
 import dev.ivan_belyaev.core.app.App
 import dev.ivan_belyaev.core.app.ApplicationProvider
 
-class CinemaSearchApplication : Application(), App {
+internal class CinemaSearchApplication : Application(), App {
 
     private lateinit var appComponent: ApplicationProvider
 

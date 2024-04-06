@@ -2,7 +2,7 @@ package dev.ivan_belyaev.core_factory
 
 import android.app.Application
 import dev.ivan_belyaev.core.app.CoreDependenciesProvider
-import dev.ivan_belyaev.core_implementation.di.android.CoreDependenciesComponent
+import dev.ivan_belyaev.core_impl.di.android.CoreDependenciesComponent
 
 object CoreFactory {
 

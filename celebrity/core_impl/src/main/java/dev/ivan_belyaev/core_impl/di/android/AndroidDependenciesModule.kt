@@ -1,4 +1,4 @@
-package dev.ivan_belyaev.core_implementation.di.android
+package dev.ivan_belyaev.core_impl.di.android
 
 import android.app.Application
 import android.content.Context
