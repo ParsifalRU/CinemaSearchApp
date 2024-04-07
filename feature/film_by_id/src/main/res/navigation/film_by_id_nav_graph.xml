@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/feature_film_by_id_nav_graph"
+    app:startDestination="@id/fragment_film_by_id">
+    <fragment
+        android:id="@+id/fragment_film_by_id"
+        android:name="dev.ivan_belyaev.film_by_id.presentation.fragment.FilmByIdFragment"
+        android:label="film_by_id"
+        tools:layout="@layout/fragment_film_by_id"/>
+
+</navigation>

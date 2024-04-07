@@ -41,10 +41,15 @@ android {
 }
 
 dependencies {
+    //_____________CORE_MODULES_____________
     implementation(project(":celebrity:core"))
     implementation(project(":celebrity:core_impl"))
     implementation(project(":celebrity:core_factory"))
     implementation(project(":celebrity:network"))
+    //_____________FEATURE_MODULES_____________
+    implementation(project(":feature:film_by_id"))
+    //_____________API_MODULES_____________
+    implementation (project(":api:film_by_id_api"))
 
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.retrofit)
@@ -59,6 +64,7 @@ dependencies {
 
     implementation(libs.dagger)
     implementation(libs.javax.inject)
+
     kapt(libs.dagger.compiler)
     kapt("com.google.dagger:dagger-android-processor:2.47")
 }

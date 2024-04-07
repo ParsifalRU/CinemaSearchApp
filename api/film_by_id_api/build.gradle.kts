@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "dev.ivan_belyaev.feature"
+    namespace = "dev.ivan_belyaev.film_by_id_api"
     compileSdk = 34
 
     defaultConfig {
@@ -35,10 +35,8 @@ android {
 
 dependencies {
 
+    implementation(project(":celebrity:core"))
+
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+
 }
