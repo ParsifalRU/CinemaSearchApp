@@ -3,10 +3,7 @@ package dev.ivan_belyaev.film_by_id.presentation.viewmodel
 import dev.ivan_belyaev.core.base.BaseViewModel
 import javax.inject.Inject
 
-class FilmByIdViewModel
-@Inject constructor(
-
-) : BaseViewModel() {
+class FilmByIdViewModel @Inject constructor() : BaseViewModel() {
 
 /*    private val _viewState = MutableStateFlow(getDefaultState())
     val viewState: StateFlow<AuthorizationViewState> = _viewState

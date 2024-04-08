@@ -48,8 +48,10 @@ dependencies {
     implementation(project(":celebrity:network"))
     //_____________FEATURE_MODULES_____________
     implementation(project(":feature:film_by_id"))
+    implementation(project(":feature:all_films"))
     //_____________API_MODULES_____________
     implementation (project(":api:film_by_id_api"))
+    implementation (project(":api:all_films_api"))
 
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.retrofit)

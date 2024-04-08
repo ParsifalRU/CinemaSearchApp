@@ -16,14 +16,21 @@ dependencyResolutionManagement {
 
 rootProject.name = "CinemaSearchApp"
 include(":app")
-
+//FOLDERS
 include(":api")
 include(":celebrity")
 include(":feature")
+//CELEBRITY
 include(":celebrity:core")
 include(":celebrity:core_factory")
 include(":celebrity:core_impl")
 include(":celebrity:coreui")
 include(":celebrity:network")
-include(":feature:film_by_id")
+//API
 include(":api:film_by_id_api")
+include(":api:all_films_api")
+//FEATURE
+include(":feature:film_by_id")
+
+include(":feature:all_films")
+

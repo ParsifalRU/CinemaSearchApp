@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "dev.ivan_belyaev.filmbyid"
+    namespace = "dev.ivan_belyaev.all_films"
     compileSdk = 34
 
     defaultConfig {
@@ -42,7 +42,7 @@ dependencies {
     implementation(project(":celebrity:core"))
     implementation(project(":celebrity:coreui"))
     implementation(project(":celebrity:network"))
-    implementation(project(":api:film_by_id_api"))
+    implementation(project(":api:all_films_api"))
 
     implementation(libs.retrofit)
     implementation(libs.retrofit2.converter.gson2)

@@ -1,10 +1,11 @@
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.android.kotlin)
 }
 
 android {
-    namespace = "dev.ivan_belyaev.film_by_id_api"
+    namespace = "dev.ivan_belyaev.all_films_api"
     compileSdk = 34
 
     defaultConfig {
@@ -34,8 +35,10 @@ android {
 
 dependencies {
 
-    implementation(project(":celebrity:core"))
-
     implementation(libs.androidx.core.ktx)
-
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }

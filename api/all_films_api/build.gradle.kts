@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "dev.ivan_belyaev.film_by_id_api"
+    namespace = "dev.ivan_belyaev.all_films"
     compileSdk = 34
 
     defaultConfig {
