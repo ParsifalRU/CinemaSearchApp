@@ -4,7 +4,6 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
-import dev.ivan_belyaev.network.api.CinemasApi
 import dev.ivan_belyaev.network.okhttp.OkHttpInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -38,13 +37,6 @@ class NetworkModule {
         return GsonBuilder()
             .setLenient()
             .create()
-    }
-
-    @Provides
-    fun provideRefreshTokenApi(
-        retrofit: Retrofit
-    ): CinemasApi {
-        return retrofit.create(CinemasApi::class.java)
     }
 
     @Provides

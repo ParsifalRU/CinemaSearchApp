@@ -10,6 +10,7 @@ import dev.ivan_belyaev.film_by_id.presentation.fragment.FilmByIdFragment
         FilmByIdApiModule::class,
         FilmByIdMediatorsModule::class,
         FilmByIdMediatorsModule::class,
+        FilmByIdRepositoryModule::class,
     ],
     dependencies = [
         ApplicationProvider::class,

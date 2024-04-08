@@ -46,7 +46,7 @@ dependencies {
 
     implementation(libs.retrofit)
     implementation(libs.retrofit2.converter.gson2)
-
+    implementation(libs.kotlinx.coroutines.android)
     implementation(libs.dagger)
     api(libs.androidx.lifecycle.viewmodel.ktx)
     api(libs.androidx.lifecycle.runtime.ktx)

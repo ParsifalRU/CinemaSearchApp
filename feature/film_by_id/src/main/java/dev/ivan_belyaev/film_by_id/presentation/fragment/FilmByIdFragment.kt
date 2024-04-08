@@ -26,7 +26,7 @@ class FilmByIdFragment :
         savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
-
+        viewModel.testGetRequest()
         /*viewModel.viewState.observe { state -> renderState(state) }*/
     }
 

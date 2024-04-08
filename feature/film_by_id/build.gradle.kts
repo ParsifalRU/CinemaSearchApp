@@ -46,6 +46,7 @@ dependencies {
 
     implementation(libs.retrofit)
     implementation(libs.retrofit2.converter.gson2)
+    implementation ("com.squareup.okhttp3:okhttp:3.14.9")
 
     implementation(libs.dagger)
     api(libs.androidx.lifecycle.viewmodel.ktx)

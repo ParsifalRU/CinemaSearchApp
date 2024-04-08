@@ -1,4 +1,4 @@
-package dev.ivan_belyaev.network.data
+package dev.ivan_belyaev.film_by_id.data
 
 data class FilmByIdModel(
     val name: String,
