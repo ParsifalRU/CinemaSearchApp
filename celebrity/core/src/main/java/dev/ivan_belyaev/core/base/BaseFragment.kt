@@ -6,10 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import dev.ivan_belyaev.core.app.App
 import dev.ivan_belyaev.core.app.ApplicationProvider
 import dev.ivan_belyaev.core.base.di.ViewModelFactory
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 abstract class BaseFragment<VM : BaseViewModel, VB : ViewBinding>(
@@ -48,14 +53,13 @@ abstract class BaseFragment<VM : BaseViewModel, VB : ViewBinding>(
      */
     protected abstract fun inject(applicationProvider: ApplicationProvider)
 
-/*    *//**
-     * Observe flow with fragment's scope.
-     *//*
+
     fun <T> Flow<T>.observe(action: suspend (T) -> Unit) {
         this.flowWithLifecycle(viewLifecycleOwner.lifecycle)
             .onEach(action)
             .launchIn(lifecycleScope)
-    }*/
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()

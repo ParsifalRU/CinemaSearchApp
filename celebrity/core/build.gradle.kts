@@ -39,6 +39,7 @@ android {
 
 dependencies {
 
+    implementation(libs.androidx.navigation.fragment.ktx)
     kapt(libs.dagger.compiler)
     implementation(libs.retrofit2.converter.gson2)
     implementation(libs.retrofit)

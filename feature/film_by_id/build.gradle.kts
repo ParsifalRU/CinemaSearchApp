@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.android.kotlin)
     id("kotlin-kapt")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -47,7 +48,9 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit2.converter.gson2)
     implementation ("com.squareup.okhttp3:okhttp:3.14.9")
+    implementation ("androidx.appcompat:appcompat:1.6.1")
 
+    implementation("com.github.bumptech.glide:glide:4.15.1")
     implementation(libs.dagger)
     api(libs.androidx.lifecycle.viewmodel.ktx)
     api(libs.androidx.lifecycle.runtime.ktx)

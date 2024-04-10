@@ -2,7 +2,7 @@ package dev.ivan_belyaev.film_by_id.di
 
 import dagger.Component
 import dev.ivan_belyaev.core.app.ApplicationProvider
-import dev.ivan_belyaev.film_by_id.presentation.fragment.FilmByIdFragment
+import dev.ivan_belyaev.film_by_id.presentation.FilmByIdFragment
 
 @Component(
     modules = [

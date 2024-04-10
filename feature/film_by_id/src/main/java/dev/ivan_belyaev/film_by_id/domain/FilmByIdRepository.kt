@@ -1,8 +1,8 @@
 package dev.ivan_belyaev.film_by_id.domain
 
-import dev.ivan_belyaev.film_by_id.data.Response
+import dev.ivan_belyaev.film_by_id.domain.model.FilmByIdModel
 
 interface FilmByIdRepository {
 
-    suspend fun getAllFilms(): Response
+    suspend fun getAllFilms(): FilmByIdModel
 }

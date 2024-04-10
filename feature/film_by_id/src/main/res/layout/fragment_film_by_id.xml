@@ -1,8 +1,10 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -13,36 +15,131 @@
             android:id="@+id/textViewTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Название фильма"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Изображение постера -->
         <ImageView
             android:id="@+id/imageViewPoster"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
             android:adjustViewBounds="true"
-            android:layout_marginBottom="8dp"/>
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
         <!-- Описание фильма -->
         <TextView
-            android:id="@+id/textViewDescription"
+            android:id="@+id/textViewDescriptionTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Описание фильма"
-            android:layout_marginBottom="8dp"/>
+            android:text="Описание фильма:"
+            android:layout_marginBottom="8dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewPoster"/>
+
+        <TextView
+            android:id="@+id/textViewDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Описание отсутствуют"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDescriptionTitle"/>
 
         <!-- Рейтинг -->
         <TextView
             android:id="@+id/textViewRating"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Рейтинг: 0.0"
-            android:layout_marginBottom="8dp"/>
+            android:text="Рейтинг:"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDescription"/>
 
+        <TextView
+            android:id="@+id/textViewKpRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="kp:"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRating"/>
+
+        <TextView
+            android:id="@+id/textViewKpRatingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@+id/textViewKpRating"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRating" />
+
+        <TextView
+            android:id="@+id/textViewImdbRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="imdb:"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintStart_toEndOf="@+id/textViewKpRatingText"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRating" />
+
+
+        <TextView
+            android:id="@+id/textViewImdbRatingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@+id/textViewImdbRating"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRating" />
+
+        <TextView
+            android:id="@+id/textViewFilmCriticsRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="filmCritics:"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintStart_toEndOf="@+id/textViewImdbRatingText"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRating" />
+
+        <TextView
+            android:id="@+id/textViewFilmCriticsRatingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@+id/textViewFilmCriticsRating"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRating" />
+
+        <TextView
+            android:id="@+id/textViewRussianFilmCriticsRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="russianFilmCritics:"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintStart_toEndOf="@+id/textViewFilmCriticsRatingText"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRating" />
+
+        <TextView
+            android:id="@+id/textViewRussianFilmCriticsRatingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@+id/textViewRussianFilmCriticsRating"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRating" />
+
+        <!-- Список отзывов (RecyclerView) -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewPosters"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRussianFilmCriticsRatingText"/>
         <!-- Заголовок для отзывов -->
         <TextView
             android:id="@+id/textViewReviewsTitle"
@@ -51,14 +148,18 @@
             android:text="Отзывы"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerViewPosters"/>
 
         <!-- Список отзывов (RecyclerView) -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewReviews"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewReviewsTitle"/>
 
         <!-- Заголовок для актеров -->
         <TextView
@@ -68,14 +169,18 @@
             android:text="Актеры"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerViewReviews"/>
 
         <!-- Список актеров (RecyclerView) -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewActors"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewActorsTitle"/>
 
         <!-- Заголовок для сезонов (для сериалов) -->
         <TextView
@@ -85,13 +190,17 @@
             android:text="Сезоны"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerViewActors"/>
 
         <!-- Список сезонов (RecyclerView) -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewSeasons"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSeasonsTitle"/>
 
         <!-- Кнопка "Назад" -->
         <Button
@@ -99,6 +208,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Назад"
-            android:layout_marginTop="16dp"/>
-    </LinearLayout>
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerViewSeasons"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
