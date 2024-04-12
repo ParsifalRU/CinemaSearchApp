@@ -13,6 +13,7 @@ import dev.ivan_belyaev.all_films_api.presentation.model.FilmByNameUiModel
 import dev.ivan_belyaev.all_films_api.presentation.viewmodel.AllFilmsViewModel
 import dev.ivan_belyaev.core.app.ApplicationProvider
 import dev.ivan_belyaev.core.base.BaseFragment
+import dev.ivan_belyaev.coreui.listeners.setDebouncedClickListener
 import dev.ivan_belyaev.coreui.listeners.setDebouncedQueryTextListener
 
 class AllFilmsFragment :
@@ -40,6 +41,9 @@ class AllFilmsFragment :
     }
 
     private fun renderAllNamesState(namesState: FilmByNameUiModel) {
+        binding.currentPageTextView.text = " .. ${namesState.page} .. "
+        binding.endPageTextView.text = namesState.pages.toString()
+
         val arrayList = ArrayList<AllFilmsModel>()
         for (i in 0 .. namesState.docs.lastIndex){
             arrayList.add(
@@ -55,14 +59,36 @@ class AllFilmsFragment :
 
 
      private fun setUpListeners() {
+         var actualSearchText = ""
          binding.searchView.setDebouncedQueryTextListener(
              onQuerySubmitAction = { query ->
-                 viewModel.updateFilmsList(query.toString())
+//                 viewModel.updateFilmsList(query.toString())
              },
              onQueryChangeAction = { newText ->
-                 viewModel.updateFilmsList(newText.toString())
+                 if (newText != null) {
+                     actualSearchText = newText
+                 }
+                 viewModel.updateFilmsList(newText.toString(), 1)
              }
          )
+         binding.filterTextView.setDebouncedClickListener {
+             binding.expandableFilterLayout.root.visibility = View.VISIBLE
+         }
+         binding.rootView.setOnClickListener {
+             binding.expandableFilterLayout.root.visibility = View.GONE
+         }
+         binding.expandableFilterLayout.applyButton.setOnClickListener {
+             binding.expandableFilterLayout.root.visibility = View.GONE
+         }
+         binding.expandableFilterLayout.closeButton.setOnClickListener {
+             binding.expandableFilterLayout.root.visibility = View.GONE
+         }
+         binding.nextPageTextView.setOnClickListener {
+             viewModel.nextPageFilmList(actualSearchText)
+         }
+         binding.previousPageTextView.setOnClickListener {
+             viewModel.previousPageFilmList(actualSearchText)
+         }
      }
 
 

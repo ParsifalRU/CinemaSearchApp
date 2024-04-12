@@ -6,8 +6,10 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rootView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchView"
@@ -17,14 +19,41 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <TextView
+            android:id="@+id/filterTextView"
+            android:layout_margin="5dp"
+            android:text="filters"
+            android:textStyle="bold"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchView"/>
+
+        <View
+            android:id="@+id/separatorLineView"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/expandable_filter_layout"/>
+
+        <include layout="@layout/filter_view"
+            android:id="@+id/expandable_filter_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/filterTextView"
+            android:visibility="gone"/>
+
+<!--        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewHistory"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:visibility="gone"
             android:background="@android:color/black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchView"/>
+            app:layout_constraintTop_toBottomOf="@+id/searchView"/>-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewNames"
@@ -32,7 +61,65 @@
             android:layout_height="0dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchView"/>
+            app:layout_constraintTop_toBottomOf="@+id/separatorLineView"/>
+
+        <View
+            android:id="@+id/separatorLineViewDown"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerViewNames"/>
+
+        <TextView
+            android:id="@+id/nextPageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Следующая страница"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/separatorLineViewDown"/>
+
+        <TextView
+            android:id="@+id/previousPageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="8dp"
+            android:text="Предыдущая страница"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/separatorLineViewDown"/>
+
+
+        <TextView
+            android:id="@+id/startPageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="1"
+            app:layout_constraintEnd_toStartOf="@+id/currentPageTextView"
+            app:layout_constraintTop_toBottomOf="@+id/previousPageTextView" />
+
+        <TextView
+            android:id="@+id/endPageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="10"
+            app:layout_constraintStart_toEndOf="@+id/currentPageTextView"
+            app:layout_constraintTop_toBottomOf="@+id/previousPageTextView" />
+
+        <TextView
+            android:id="@+id/currentPageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="..2.."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/previousPageTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

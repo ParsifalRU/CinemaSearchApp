@@ -14,7 +14,6 @@ class FilmWithFiltersRepositoryImpl @Inject constructor(
     override suspend fun getFilmsWithFilters(
         page: Int,
         limit: Int,
-        query: String,
         countriesName: Array<String>?,
         premiereCinema: Array<String>?,
         ageRating: Array<String>?
@@ -24,7 +23,6 @@ class FilmWithFiltersRepositoryImpl @Inject constructor(
                 token = ApiSetting.token,
                 page = page,
                 limit = limit,
-                query = query,
                 ageRating = ageRating,
                 countriesName = countriesName,
                 premiereCinema = premiereCinema,

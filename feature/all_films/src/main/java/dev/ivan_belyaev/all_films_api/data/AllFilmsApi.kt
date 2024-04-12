@@ -18,13 +18,12 @@ interface AllFilmsApi {
         @Query("query") query: String
     ): FilmByNameDto
 
-    @GET("/v1.4/movie/")
+    @GET("/v1.4/movie")
     suspend fun fetchFilmsWithFilters(
         @Header(ApiSetting.header) token: String,
-        @Query("page") @IntRange(from = 1)page: Int = 1,
+        @Query("page") @IntRange(from = 1) page: Int = 1,
         @Query("limit") @IntRange(from = 0, to = 10) limit: Int = 10,
-        @Query("query") query: String,
-        @Query("selectFields") selectFields: Array<String> = arrayOf("id", "name"),
+        @Query("selectFields") selectFields: Array<String> = arrayOf("id", "names"),
         @Query("ageRating") ageRating: Array<String>? = null,
         @Query("countries.name") countriesName: Array<String>? = null,
         @Query("premiere.cinema") premiereCinema: Array<String>? = null,
