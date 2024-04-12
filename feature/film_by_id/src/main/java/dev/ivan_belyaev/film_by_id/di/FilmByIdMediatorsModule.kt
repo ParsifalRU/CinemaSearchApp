@@ -1,18 +1,20 @@
 package dev.ivan_belyaev.film_by_id.di
 
-import dagger.Module
-import dagger.Provides
-import dev.ivan_belyaev.core.navigation.MediatorsMap
-import dev.ivan_belyaev.core.navigation.getMediator
-import dev.ivan_belyaev.film_by_id_api.FilmByIdMediator
-
+/*
 @Module
 object FilmByIdMediatorsModule {
 
-    @Provides
+   @Provides
     fun provideFilmByIdMediator(
-        mediatorsMap: MediatorsMap
+        @MediatorsQualifier mediatorsMap: MediatorsMap
     ): FilmByIdMediator {
         return mediatorsMap.getMediator()
     }
-}
+
+   @Provides
+    fun provideAllFilmsMediator(
+        @MediatorsQualifier mediatorsMap: MediatorsMap
+    ): AllFilmsMediator {
+        return mediatorsMap.getMediator()
+    }
+}*/

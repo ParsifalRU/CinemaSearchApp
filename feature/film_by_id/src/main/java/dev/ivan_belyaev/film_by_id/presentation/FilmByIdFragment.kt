@@ -7,11 +7,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import dev.ivan_belyaev.core.app.ApplicationProvider
 import dev.ivan_belyaev.core.base.BaseFragment
 import dev.ivan_belyaev.core.resources.AppResources
+import dev.ivan_belyaev.coreui.listeners.setDebouncedClickListener
 import dev.ivan_belyaev.film_by_id.di.FilmByIdComponent
+import dev.ivan_belyaev.film_by_id.presentation.adapter.PostersListAdapter
+import dev.ivan_belyaev.film_by_id.presentation.adapter.PostersModel
 import dev.ivan_belyaev.film_by_id.presentation.model.FilmsByIdUiModel
 import dev.ivan_belyaev.film_by_id.presentation.model.PostersFilmsUiModel
-import dev.ivan_belyaev.film_by_id.presentation.posters.PostersListAdapter
-import dev.ivan_belyaev.film_by_id.presentation.posters.PostersModel
+import dev.ivan_belyaev.film_by_id_api.FilmByIdApiModel
+import dev.ivan_belyaev.film_by_id_api.FilmByIdMediator
 import dev.ivan_belyaev.filmbyid.databinding.FragmentFilmByIdBinding
 import javax.inject.Inject
 
@@ -33,6 +36,7 @@ class FilmByIdFragment :
         savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
+        navigateToAllFilmsScreen()
         setRecyclerView()
         viewModel.state.observe{state -> renderState(state) }
         viewModel.posterState.observe{state -> renderPosterState(state) }
@@ -46,8 +50,9 @@ class FilmByIdFragment :
             textViewImdbRatingText.text = state.rating.imdb.toString()
             textViewFilmCriticsRatingText.text = state.rating.filmCritics.toString()
             textViewRussianFilmCriticsRatingText.text = state.rating.russianFilmCritics.toString()
+            binding.rootView.visibility = state.rootLayoutVisibility
+            binding.downloadImageView.visibility = state.downloadLayoutVisibility
         }
-
     }
 
     private fun renderPosterState(posterState: PostersFilmsUiModel) {
@@ -61,10 +66,16 @@ class FilmByIdFragment :
             )
         }
         list = arrayList
-        adapter.submitList(list)
+        if (list.isEmpty()){
+            binding.recyclerViewPosters.visibility = View.GONE
+        } else {
+            binding.recyclerViewPosters.visibility = View.VISIBLE
+            adapter.submitList(list)
+        }
+
     }
 
-    fun setRecyclerView(){
+    private fun setRecyclerView(){
         val gridLayoutManager = GridLayoutManager(
             requireContext(), 1, GridLayoutManager.HORIZONTAL, false
         )
@@ -73,8 +84,18 @@ class FilmByIdFragment :
         binding.recyclerViewPosters.adapter = adapter
     }
 
+    private fun navigateToAllFilmsScreen(){
+        binding.buttonBack.setDebouncedClickListener {
+            viewModel.navigateToAllFilmsScreen()
+        }
+    }
+
     override fun inject(applicationProvider: ApplicationProvider) {
-        FilmByIdComponent.init(applicationProvider)
-            .inject(this)
+        FilmByIdComponent.init(
+            applicationProvider,
+            requireArguments().getSerializable(
+                FilmByIdMediator.MODEL_ID_EXTRA
+            ) as FilmByIdApiModel
+        ).inject(this)
     }
 }

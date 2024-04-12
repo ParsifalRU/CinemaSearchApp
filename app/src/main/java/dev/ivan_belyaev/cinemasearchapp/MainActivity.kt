@@ -17,24 +17,7 @@ internal class MainActivity : AppCompatActivity() {
     private val viewModel: MainActivityViewModel by viewModels { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        /*setTheme(coreUiR.style.Theme_Liberty)*/
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
     }
-
-   /* override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(newBase)
-        MainActivityComponent.init((newBase.applicationContext as App).getApplicationProvider())
-            .inject(this)
-    }
-
-    override fun onResumeFragments() {
-        super.onResumeFragments()
-        *//*viewModel.setNavigator(ApplicationNavigator(this, binding.root.id))*//*
-    }
-
-    override fun onPause() {
-        super.onPause()
-        viewModel.removeNavigator()
-    }*/
 }

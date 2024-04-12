@@ -13,5 +13,5 @@ interface AllFilmsViewModelsModule {
     @Binds
     @IntoMap
     @ViewModelKey(AllFilmsViewModel::class)
-    fun providePinCreateViewModel(viewModel: AllFilmsViewModel): ViewModel
+    fun provideAllFilmsViewModel(viewModel: AllFilmsViewModel): ViewModel
 }

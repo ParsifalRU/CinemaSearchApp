@@ -8,8 +8,8 @@ import dev.ivan_belyaev.core.app.ApplicationProvider
     modules = [
         AllFilmsViewModelsModule::class,
         AllFilmsApiModule::class,
-        AllFilmsMediatorModule::class,
         AllFilmsMediatorsModule::class,
+        AllFilmsRepositoryModule::class
     ],
     dependencies = [
         ApplicationProvider::class,

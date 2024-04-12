@@ -13,5 +13,5 @@ internal interface MainActivityViewModelsModule {
     @Binds
     @IntoMap
     @ViewModelKey(MainActivityViewModel::class)
-    fun bindLoginViewModel(viewModel: MainActivityViewModel): ViewModel
+    fun bindMainActivityViewModel(viewModel: MainActivityViewModel): ViewModel
 }

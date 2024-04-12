@@ -43,10 +43,15 @@ dependencies {
     implementation(project(":celebrity:coreui"))
     implementation(project(":celebrity:network"))
     implementation(project(":api:all_films_api"))
+    implementation(project(":api:film_by_id_api"))
 
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
     implementation(libs.retrofit)
     implementation(libs.retrofit2.converter.gson2)
-    implementation(libs.kotlinx.coroutines.android)
+    implementation ("com.squareup.okhttp3:okhttp:3.14.9")
+    implementation ("androidx.appcompat:appcompat:1.6.1")
+
+    implementation("com.github.bumptech.glide:glide:4.15.1")
     implementation(libs.dagger)
     api(libs.androidx.lifecycle.viewmodel.ktx)
     api(libs.androidx.lifecycle.runtime.ktx)

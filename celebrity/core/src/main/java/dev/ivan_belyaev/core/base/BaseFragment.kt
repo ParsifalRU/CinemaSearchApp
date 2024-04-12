@@ -1,20 +1,23 @@
 package dev.ivan_belyaev.core.base
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import dev.ivan_belyaev.core.app.App
 import dev.ivan_belyaev.core.app.ApplicationProvider
 import dev.ivan_belyaev.core.base.di.ViewModelFactory
+import dev.ivan_belyaev.core.navigation.NavigationCommand
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 abstract class BaseFragment<VM : BaseViewModel, VB : ViewBinding>(
@@ -68,15 +71,33 @@ abstract class BaseFragment<VM : BaseViewModel, VB : ViewBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().onBackPressedDispatcher.addCallback(this, enabled = overrideBackButton) {
-            onBackButtonPressed()
-        }
+        observeNavigation()
     }
 
-    /**
-     * Called when system back button is pressed.
-     *
-     * Only works if [overrideBackButton] is set to true.
-     */
-    protected open fun onBackButtonPressed() = Unit
+    private fun observeNavigation() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.navigation.collect { event ->
+               event.getContentIfNotHandled()?.let { navigationCommand ->
+                    handleNavigation(navigationCommand)
+                }
+            }
+        }
+    }
+    private fun handleNavigation(navCommand: NavigationCommand) {
+        Log.d("LOGTAG", "Handling navigation command: $navCommand")
+        when (navCommand) {
+            is NavigationCommand.ToDirection -> {
+                Log.d("LOGTAG", "Navigating to destination: ${navCommand.navData.resId}")
+                findNavController().navigate(
+                    resId = navCommand.navData.resId,
+                    args = navCommand.navData.args
+                )
+            }
+            is NavigationCommand.Back ->
+            {
+                Log.d("LOGTAG", "Navigating back")
+                findNavController().navigateUp()
+            }
+        }
+    }
 }

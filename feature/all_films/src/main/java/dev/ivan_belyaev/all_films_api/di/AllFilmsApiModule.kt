@@ -1,11 +1,14 @@
 package dev.ivan_belyaev.all_films_api.di
 
 import dagger.Module
+import dagger.Provides
+import dev.ivan_belyaev.all_films_api.data.AllFilmsApi
+import retrofit2.Retrofit
 
 @Module
 class AllFilmsApiModule {
 
-/*    @Provides
-    fun provideAllFilmsApi(retrofit: Retrofit): dev.ivan_belyaev.film_by_id.data.AllFilmsApi =
-        retrofit.create(dev.ivan_belyaev.film_by_id.data.AllFilmsApi::class.java)*/
+    @Provides
+    fun provideAllFilmsApi(retrofit: Retrofit): AllFilmsApi =
+        retrofit.create(AllFilmsApi::class.java)
 }

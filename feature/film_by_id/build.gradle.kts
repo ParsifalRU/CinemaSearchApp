@@ -44,6 +44,7 @@ dependencies {
     implementation(project(":celebrity:coreui"))
     implementation(project(":celebrity:network"))
     implementation(project(":api:film_by_id_api"))
+    implementation(project(":api:all_films_api"))
 
     implementation(libs.retrofit)
     implementation(libs.retrofit2.converter.gson2)

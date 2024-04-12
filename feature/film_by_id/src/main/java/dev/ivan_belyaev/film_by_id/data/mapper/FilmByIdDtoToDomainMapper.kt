@@ -8,8 +8,8 @@ class FilmByIdDtoToDomainMapper @Inject constructor() {
 
     operator fun invoke(filmByIdModel: FilmByIdDto) = with(filmByIdModel) {
         FilmByIdModel(
-            name = name,
-            description = description,
+            name = names[0].name,
+            description = description ?: "Нет информации",
             rating = rating,
             votes = votes,
             poster = poster

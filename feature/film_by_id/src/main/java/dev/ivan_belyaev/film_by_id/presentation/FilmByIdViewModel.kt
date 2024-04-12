@@ -1,6 +1,7 @@
 package dev.ivan_belyaev.film_by_id.presentation
 
 import android.util.Log
+import android.view.View
 import dev.ivan_belyaev.core.base.BaseViewModel
 import dev.ivan_belyaev.film_by_id.data.dto.film_info.PosterModel
 import dev.ivan_belyaev.film_by_id.data.dto.film_info.RatingModel
@@ -11,6 +12,7 @@ import dev.ivan_belyaev.film_by_id.presentation.mapper.FilmByIdDomainToDetailsUi
 import dev.ivan_belyaev.film_by_id.presentation.mapper.PostersFilmsDomainToUiMapper
 import dev.ivan_belyaev.film_by_id.presentation.model.FilmsByIdUiModel
 import dev.ivan_belyaev.film_by_id.presentation.model.PostersFilmsUiModel
+import dev.ivan_belyaev.film_by_id_api.FilmByIdApiModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -22,7 +24,8 @@ class FilmByIdViewModel @Inject constructor(
     private val filmByIdRepository: FilmByIdRepository,
     private val filmPostersRepository: FilmPostersRepository,
     private val filmByIdDomainToDetailsUiMapper: FilmByIdDomainToDetailsUiMapper,
-    private val postersFilmsDomainToUiMapper: PostersFilmsDomainToUiMapper
+    private val postersFilmsDomainToUiMapper: PostersFilmsDomainToUiMapper,
+    private val filmIdNumber: FilmByIdApiModel
 ) : BaseViewModel() {
 
     private val _fragmentState = MutableStateFlow(getUiState())
@@ -34,7 +37,7 @@ class FilmByIdViewModel @Inject constructor(
     init {
        launch {
            try {
-               testGetRequest()
+               fetchFilmInfo()
                fetchPosters()
            }catch (e:Exception){
                Log.d("LOGTAG", "Ошибка " + e.toString() + e.cause + e.message)
@@ -42,25 +45,27 @@ class FilmByIdViewModel @Inject constructor(
        }
     }
 
-    fun getUiState(): FilmsByIdUiModel {
+    private fun getUiState(): FilmsByIdUiModel {
         return FilmsByIdUiModel(
             name = "name",
             description = "description",
             rating = RatingModel(1.0,2.0,3.0,4.0,5.0),
             votes = VotesModel(1,2,3,4,5,6),
             poster = PosterModel("1","2"),
+            rootLayoutVisibility = View.GONE,
+            downloadLayoutVisibility = View.VISIBLE
         )
     }
 
-    fun getPostersState(): PostersFilmsUiModel {
+    private fun getPostersState(): PostersFilmsUiModel {
         return PostersFilmsUiModel(
             emptyList()
         )
     }
 
-    suspend fun fetchPosters() {
+    private suspend fun fetchPosters() {
         withContext(Dispatchers.IO) {
-            val result = postersFilmsDomainToUiMapper.invoke(filmPostersRepository.getPosters())
+            val result = postersFilmsDomainToUiMapper.invoke(filmPostersRepository.getPosters(filmIdNumber.filmId))
             _posterState.update {
                 _posterState.value.copy(
                     docs = result.docs
@@ -70,9 +75,11 @@ class FilmByIdViewModel @Inject constructor(
     }
 
 
-    suspend fun testGetRequest(){
+    private suspend fun fetchFilmInfo(){
         withContext(Dispatchers.IO) {
-             val result = filmByIdDomainToDetailsUiMapper.invoke(filmByIdRepository.getAllFilms())
+             val result = filmByIdDomainToDetailsUiMapper.invoke(
+                 filmByIdRepository.getAllFilms(filmIdNumber.filmId)
+             )
             _fragmentState.update {
                 _fragmentState.value.copy(
                     name = result.name,
@@ -80,8 +87,14 @@ class FilmByIdViewModel @Inject constructor(
                     rating = result.rating,
                     votes = result.votes,
                     poster = result.poster,
+                    rootLayoutVisibility = View.VISIBLE,
+                    downloadLayoutVisibility = View.GONE
                 )
             }
         }
+    }
+
+    fun navigateToAllFilmsScreen(){
+        navigateBack()
     }
 }

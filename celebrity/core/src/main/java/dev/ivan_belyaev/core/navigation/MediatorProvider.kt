@@ -6,6 +6,7 @@ typealias MediatorsMap = Map<Class<*>, @JvmSuppressWildcards Provider<Any>>
 
 interface MediatorsProvider {
 
+    @MediatorsQualifier
     fun provideMediatorsMap(): MediatorsMap
 }
 

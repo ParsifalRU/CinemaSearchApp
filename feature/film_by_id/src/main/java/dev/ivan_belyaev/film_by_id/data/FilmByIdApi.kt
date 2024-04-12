@@ -2,15 +2,11 @@ package dev.ivan_belyaev.film_by_id.data
 
 import dev.ivan_belyaev.film_by_id.data.dto.film_info.FilmByIdDto
 import dev.ivan_belyaev.film_by_id.data.dto.film_posters.FilmPostersDto
+import dev.ivan_belyaev.network.okhttp.ApiSetting
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Path
 import retrofit2.http.Query
-
-object ApiSetting {
-    const val header = "X-API-KEY"
-    const val token = "WF76VQQ-HQB4P5G-JFJH8DF-CRKDP1M"
-}
 
 interface FilmByIdApi {
 

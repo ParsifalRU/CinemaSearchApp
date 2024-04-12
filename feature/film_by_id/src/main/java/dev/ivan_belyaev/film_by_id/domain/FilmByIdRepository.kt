@@ -4,5 +4,5 @@ import dev.ivan_belyaev.film_by_id.domain.model.FilmByIdModel
 
 interface FilmByIdRepository {
 
-    suspend fun getAllFilms(): FilmByIdModel
+    suspend fun getAllFilms(filmId: Int): FilmByIdModel
 }

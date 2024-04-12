@@ -1,4 +1,4 @@
-package dev.ivan_belyaev.film_by_id.presentation.posters
+package dev.ivan_belyaev.film_by_id.presentation.adapter
 
 import android.content.Context
 import android.util.Log

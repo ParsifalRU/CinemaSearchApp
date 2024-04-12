@@ -14,6 +14,6 @@ interface FilmByIdRepositoryModule {
     fun provideFilmByIdRepository(repository: FilmByIdRepositoryImpl): FilmByIdRepository
 
     @Binds
-    fun providePostersFilmRepository(repository: FilmPostersRepositoryImpl): FilmPostersRepository
+    fun provideFilmPostersRepository(repository: FilmPostersRepositoryImpl): FilmPostersRepository
 }
 

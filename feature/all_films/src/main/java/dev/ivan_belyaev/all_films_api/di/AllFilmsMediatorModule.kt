@@ -6,6 +6,7 @@ import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
 import dev.ivan_belyaev.all_films_api.AllFilmsMediator
 import dev.ivan_belyaev.all_films_api.api.AllFilmsMediatorImpl
+import dev.ivan_belyaev.core.navigation.MediatorsQualifier
 
 @Module
 interface AllFilmsMediatorModule {
@@ -15,6 +16,7 @@ interface AllFilmsMediatorModule {
 
     @Binds
     @IntoMap
+    @MediatorsQualifier
     @ClassKey(AllFilmsMediator::class)
-    fun bindMediatorToMap(mediator: AllFilmsMediator): Any
+    fun bindAllFilmsMediator(mediator: AllFilmsMediator): Any
 }
