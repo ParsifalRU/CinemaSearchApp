@@ -26,7 +26,7 @@ interface AllFilmsApi {
         @Query("selectFields") selectFields: Array<String> = arrayOf("id", "names"),
         @Query("ageRating") ageRating: Array<String>? = null,
         @Query("countries.name") countriesName: Array<String>? = null,
-        @Query("premiere.cinema") premiereCinema: Array<String>? = null,
+        @Query("year") year: Array<String>? = null,
     ): FilmsWithFiltersDto
 
 }

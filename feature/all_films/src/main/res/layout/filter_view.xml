@@ -10,36 +10,23 @@
         android:id="@+id/ageEditText"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:hint="Возрастной рейтинг" />
+        android:hint="Возрастной рейтинг (12, !18, 12-18)" />
 
 
     <EditText
         android:id="@+id/countryEditText"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="Страна"
+        android:hint="Страна (Россия, Сша)"
         android:layout_marginTop="52dp"/>
 
-    <LinearLayout
+
+    <EditText
+        android:id="@+id/endYearEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="104dp">
-
-        <EditText
-            android:id="@+id/startYearEditText"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text="Год (от)"/>
-
-
-        <EditText
-            android:id="@+id/endYearEditText"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text="Год (до)"/>
-
-    </LinearLayout>
+        android:layout_marginTop="104dp"
+        android:hint="Год (2000, 2002-2020)"/>
 
     <Button
         android:id="@+id/applyButton"

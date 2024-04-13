@@ -72,7 +72,6 @@ class FilmByIdFragment :
             binding.recyclerViewPosters.visibility = View.VISIBLE
             adapter.submitList(list)
         }
-
     }
 
     private fun setRecyclerView(){

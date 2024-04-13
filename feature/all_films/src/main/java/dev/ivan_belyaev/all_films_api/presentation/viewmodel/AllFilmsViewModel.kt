@@ -7,8 +7,6 @@ import dev.ivan_belyaev.all_films_api.presentation.mapper.FilmByNameDomainToUiMa
 import dev.ivan_belyaev.all_films_api.presentation.mapper.FilmWithFilterDomainToUiMapper
 import dev.ivan_belyaev.all_films_api.presentation.model.FilmByNameUiDetailModel
 import dev.ivan_belyaev.all_films_api.presentation.model.FilmByNameUiModel
-import dev.ivan_belyaev.all_films_api.presentation.model.FilmWithFilterUiDetailModel
-import dev.ivan_belyaev.all_films_api.presentation.model.FilmWithFiltersUiModel
 import dev.ivan_belyaev.core.base.BaseViewModel
 import dev.ivan_belyaev.core.wrapper.SharedPreferencesWrapper
 import dev.ivan_belyaev.film_by_id_api.FilmByIdApiModel
@@ -32,13 +30,10 @@ class AllFilmsViewModel  @Inject constructor(
     private val _fragmentState = MutableStateFlow(getUiState())
     val state: StateFlow<FilmByNameUiModel> = _fragmentState
 
-    private val _filmsWithFiltersState = MutableStateFlow(getFilmWithFilterState())
-    val filtersState: StateFlow<FilmWithFiltersUiModel> = _filmsWithFiltersState
-
     init {
         launch {
             try {
-                updateFilmsWithFiltersList(filmName = "Форсаж",null,null,null)
+                updateFilmsWithFiltersList(null, null, null)
             }catch (e:Exception){
                 Log.d("LOGTAG", "Ошибка " + e.toString() + e.cause + e.message)
             }
@@ -51,16 +46,6 @@ class AllFilmsViewModel  @Inject constructor(
             total = 0,
             limit = 0,
             page = 1,
-            pages = 0
-        )
-    }
-
-    private fun getFilmWithFilterState(): FilmWithFiltersUiModel {
-        return FilmWithFiltersUiModel(
-            docs = listOf(FilmWithFilterUiDetailModel(1,"")),
-            total = 0,
-            limit = 0,
-            page = 0,
             pages = 0
         )
     }
@@ -98,27 +83,67 @@ class AllFilmsViewModel  @Inject constructor(
     fun nextPageFilmList(actualFilmName: String){
         launch {
             fetchFilmByName(query = actualFilmName, page = _fragmentState.value.page + 1 )
-            _fragmentState.update {
-                _fragmentState.value.copy(
-                    page = _fragmentState.value.page
-                )
-            }
+        }
+        _fragmentState.update {
+            _fragmentState.value.copy(
+                page = _fragmentState.value.page
+            )
         }
     }
 
     fun previousPageFilmList(actualFilmName: String){
         launch {
             fetchFilmByName(query = actualFilmName, page = _fragmentState.value.page - 1 )
-            _fragmentState.update {
-                _fragmentState.value.copy(
-                    page = _fragmentState.value.page
-                )
-            }
+        }
+        _fragmentState.update {
+            _fragmentState.value.copy(
+                page = _fragmentState.value.page
+            )
+        }
+    }
+
+    fun nextPageWithFilterFilms(
+        countriesName: Array<String>?,
+        premiereCinema: Array<String>?,
+        ageRating: Array<String>?
+    ){
+        launch {
+            fetchFilmsWithFilters(
+                page = _fragmentState.value.page + 1,
+                limit = 10,
+                countriesName = countriesName,
+                premiereCinema = premiereCinema,
+                ageRating = ageRating
+            )
+        }
+        _fragmentState.update {
+            _fragmentState.value.copy(
+                page = _fragmentState.value.page
+            )
+        }
+    }
+
+    fun previousPageWithFilterFilms(
+        countriesName: Array<String>?,
+        premiereCinema: Array<String>?,
+        ageRating: Array<String>?){
+        launch {
+            fetchFilmsWithFilters(
+                page = _fragmentState.value.page - 1,
+                limit = 10,
+                countriesName = countriesName,
+                premiereCinema = premiereCinema,
+                ageRating = ageRating
+            )
+        }
+        _fragmentState.update {
+            _fragmentState.value.copy(
+                page = _fragmentState.value.page
+            )
         }
     }
 
     fun updateFilmsWithFiltersList(
-        filmName : String,
         countriesName: Array<String>?,
         premiereCinema: Array<String>?,
         ageRating: Array<String>?){
@@ -132,7 +157,7 @@ class AllFilmsViewModel  @Inject constructor(
         )}
     }
 
-    suspend fun fetchFilmsWithFilters(
+    private suspend fun fetchFilmsWithFilters(
         page: Int,
         limit: Int,
         countriesName: Array<String>?,
@@ -147,8 +172,8 @@ class AllFilmsViewModel  @Inject constructor(
                 premiereCinema = premiereCinema,
                 ageRating = ageRating
             ))
-            _filmsWithFiltersState.update {
-                _filmsWithFiltersState.value.copy(
+            _fragmentState.update {
+                _fragmentState.value.copy(
                     docs = result.docs,
                     total = result.total,
                     limit = result.limit,

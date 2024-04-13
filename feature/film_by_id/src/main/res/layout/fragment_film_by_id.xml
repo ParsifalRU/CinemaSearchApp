@@ -1,6 +1,5 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -143,7 +142,6 @@
                 app:layout_constraintStart_toEndOf="@+id/textViewRussianFilmCriticsRating"
                 app:layout_constraintTop_toBottomOf="@+id/textViewRating" />
 
-            <!-- Список отзывов (RecyclerView) -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewPosters"
                 android:layout_width="match_parent"
@@ -153,7 +151,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewRussianFilmCriticsRatingText"/>
-            <!-- Заголовок для отзывов -->
+
             <TextView
                 android:id="@+id/textViewReviewsTitle"
                 android:layout_width="match_parent"
@@ -165,7 +163,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerViewPosters"/>
 
-            <!-- Список отзывов (RecyclerView) -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewReviews"
                 android:layout_width="match_parent"
@@ -174,48 +171,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewReviewsTitle"/>
 
-            <!-- Заголовок для актеров -->
-            <TextView
-                android:id="@+id/textViewActorsTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Актеры"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerViewReviews"/>
-
-            <!-- Список актеров (RecyclerView) -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewActors"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewActorsTitle"/>
-
-            <!-- Заголовок для сезонов (для сериалов) -->
-            <TextView
-                android:id="@+id/textViewSeasonsTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Сезоны"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerViewActors"/>
-
-            <!-- Список сезонов (RecyclerView) -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewSeasons"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewSeasonsTitle"/>
-
-            <!-- Кнопка "Назад" -->
             <Button
                 android:id="@+id/buttonBack"
                 android:layout_width="match_parent"
@@ -223,7 +178,7 @@
                 android:text="Назад"
                 android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerViewSeasons"/>
+                app:layout_constraintTop_toBottomOf="@+id/recyclerViewReviews"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </ScrollView>

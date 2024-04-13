@@ -1,5 +1,6 @@
 package dev.ivan_belyaev.all_films_api.presentation.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -40,6 +41,7 @@ class AllFilmsFragment :
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun renderAllNamesState(namesState: FilmByNameUiModel) {
         binding.currentPageTextView.text = " .. ${namesState.page} .. "
         binding.endPageTextView.text = namesState.pages.toString()
@@ -62,7 +64,7 @@ class AllFilmsFragment :
          var actualSearchText = ""
          binding.searchView.setDebouncedQueryTextListener(
              onQuerySubmitAction = { query ->
-//                 viewModel.updateFilmsList(query.toString())
+                 viewModel.updateFilmsList(query.toString(), 1)
              },
              onQueryChangeAction = { newText ->
                  if (newText != null) {
@@ -73,24 +75,71 @@ class AllFilmsFragment :
          )
          binding.filterTextView.setDebouncedClickListener {
              binding.expandableFilterLayout.root.visibility = View.VISIBLE
-         }
-         binding.rootView.setOnClickListener {
-             binding.expandableFilterLayout.root.visibility = View.GONE
-         }
-         binding.expandableFilterLayout.applyButton.setOnClickListener {
-             binding.expandableFilterLayout.root.visibility = View.GONE
+             binding.searchView.visibility = View.GONE
          }
          binding.expandableFilterLayout.closeButton.setOnClickListener {
              binding.expandableFilterLayout.root.visibility = View.GONE
+             binding.searchView.visibility = View.VISIBLE
          }
-         binding.nextPageTextView.setOnClickListener {
-             viewModel.nextPageFilmList(actualSearchText)
+         when (binding.searchView.visibility){
+             View.VISIBLE -> {
+                 binding.nextPageTextView.setDebouncedClickListener {
+                     viewModel.nextPageFilmList(actualSearchText)
+                 }
+                 binding.previousPageTextView.setDebouncedClickListener {
+                     viewModel.previousPageFilmList(actualSearchText)
+                 }
+             }
+             View.GONE -> {
+                 binding.nextPageTextView.setDebouncedClickListener {
+                     viewModel.nextPageWithFilterFilms(
+                         countriesName = getFilterTest()[1]?.
+                         replace(" ", "")?.split(", ")?.toTypedArray(),
+                         premiereCinema = getFilterTest()[2]?.
+                         replace(" ", "")?.split(", ")?.map { it.trim() }?.toTypedArray(),
+                         ageRating = getFilterTest()[0]?.
+                         replace(" ", "")?.split(", ")?.map { it.trim() }?.toTypedArray()
+                     )
+                 }
+                 binding.previousPageTextView.setDebouncedClickListener {
+                     viewModel.previousPageWithFilterFilms(
+                         countriesName = getFilterTest()[1]?.
+                         replace(" ", "")?.split(", ")?.toTypedArray(),
+                         premiereCinema = getFilterTest()[2]?.
+                         replace(" ", "")?.split(", ")?.map { it.trim() }?.toTypedArray(),
+                         ageRating = getFilterTest()[0]?.
+                         replace(" ", "")?.split(", ")?.map { it.trim() }?.toTypedArray()
+                     )
+                 }
+             }
+             View.INVISIBLE -> {}
          }
-         binding.previousPageTextView.setOnClickListener {
-             viewModel.previousPageFilmList(actualSearchText)
+
+         binding.expandableFilterLayout.applyButton.setDebouncedClickListener {
+             viewModel.updateFilmsWithFiltersList(
+                 countriesName = getFilterTest()[1]?.
+                 replace(" ", "")?.split(", ")?.toTypedArray(),
+                 premiereCinema = getFilterTest()[2]?.
+                 replace(" ", "")?.split(", ")?.map { it.trim() }?.toTypedArray(),
+                 ageRating = getFilterTest()[0]?.
+                 replace(" ", "")?.split(", ")?.map { it.trim() }?.toTypedArray()
+             )
          }
      }
 
+    private fun getFilterTest(): Array<String?> {
+        val array = arrayListOf<String?>()
+        if (binding.expandableFilterLayout.ageEditText.text.toString() != ""){
+                array.add(binding.expandableFilterLayout.ageEditText.text.toString())
+        } else array.add(null)
+        if (binding.expandableFilterLayout.countryEditText.text.toString() != ""){
+            array.add(binding.expandableFilterLayout.countryEditText.text.toString())
+        } else array.add(null)
+        if (binding.expandableFilterLayout.endYearEditText.text.toString() != ""){
+            array.add(binding.expandableFilterLayout.endYearEditText.text.toString())
+        } else array.add(null)
+        return array.toTypedArray()
+    }
 
     private fun setRecyclerView(){
         val linearLayoutManager = LinearLayoutManager(
@@ -100,7 +149,6 @@ class AllFilmsFragment :
         adapter = AllFilmsListAdapter(viewModel)
         binding.recyclerViewNames.adapter = adapter
     }
-
 
     override fun inject(applicationProvider: ApplicationProvider) {
         AllFilmsComponent.init(applicationProvider)

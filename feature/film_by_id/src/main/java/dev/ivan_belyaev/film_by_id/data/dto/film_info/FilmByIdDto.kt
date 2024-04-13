@@ -6,7 +6,7 @@ data class FilmByIdDto(
     @SerializedName("id")
     val id: Int,
     @SerializedName("year")
-    val year: Int,
+    val year: Int = 0,
     @SerializedName("names")
     val names: List<NamesModel>,
     @SerializedName("description")

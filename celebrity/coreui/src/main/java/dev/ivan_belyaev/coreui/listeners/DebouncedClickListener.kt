@@ -4,7 +4,7 @@ import android.os.SystemClock
 import android.view.View
 
 fun View.setDebouncedClickListener(
-    delay: Long = 1000L,
+    delay: Long = 1500L,
     onClickAction: () -> Unit
 ){
     setOnClickListener(getDebouncedClickListener(delay, onClickAction ))

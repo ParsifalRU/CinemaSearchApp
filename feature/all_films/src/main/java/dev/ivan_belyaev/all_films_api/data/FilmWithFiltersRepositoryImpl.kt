@@ -25,7 +25,7 @@ class FilmWithFiltersRepositoryImpl @Inject constructor(
                 limit = limit,
                 ageRating = ageRating,
                 countriesName = countriesName,
-                premiereCinema = premiereCinema,
+                year = premiereCinema,
 
             )
         )
