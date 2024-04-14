@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class AllFilmsViewModel  @Inject constructor(
+class AllFilmsViewModel @Inject constructor(
     private val filmByIdMediator: FilmByIdMediator,
     private val filmByNameDomainToUiMapper: FilmByNameDomainToUiMapper,
     private val filmWithFilterDomainToUiMapper: FilmWithFilterDomainToUiMapper,
@@ -34,7 +34,7 @@ class AllFilmsViewModel  @Inject constructor(
         launch {
             try {
                 updateFilmsWithFiltersList(null, null, null)
-            }catch (e:Exception){
+            } catch (e: Exception) {
                 Log.d("LOGTAG", "Ошибка " + e.toString() + e.cause + e.message)
             }
         }
@@ -42,7 +42,7 @@ class AllFilmsViewModel  @Inject constructor(
 
     private fun getUiState(): FilmByNameUiModel {
         return FilmByNameUiModel(
-            docs = listOf(FilmByNameUiDetailModel("",1)),
+            docs = listOf(FilmByNameUiDetailModel("", 1)),
             total = 0,
             limit = 0,
             page = 1,
@@ -50,14 +50,20 @@ class AllFilmsViewModel  @Inject constructor(
         )
     }
 
-    private suspend fun fetchFilmByName(page: Int = getUiState().page, limit: Int = 10, query : String = "null"){
-        if (query != "null"){
+    private suspend fun fetchFilmByName(
+        page: Int = getUiState().page,
+        limit: Int = 10,
+        query: String = "null"
+    ) {
+        if (query != "null") {
             withContext(Dispatchers.IO) {
-                val result = filmByNameDomainToUiMapper.invoke(filmByNameRepository.getFilmsByName(
-                    page,
-                    limit,
-                    query
-                ))
+                val result = filmByNameDomainToUiMapper.invoke(
+                    filmByNameRepository.getFilmsByName(
+                        page,
+                        limit,
+                        query
+                    )
+                )
                 _fragmentState.update {
                     _fragmentState.value.copy(
                         docs = result.docs,
@@ -71,7 +77,7 @@ class AllFilmsViewModel  @Inject constructor(
         }
     }
 
-    fun updateFilmsList(filmName : String, page: Int){
+    fun updateFilmsList(filmName: String, page: Int) {
         _fragmentState.update {
             _fragmentState.value.copy(
                 page = page
@@ -80,9 +86,9 @@ class AllFilmsViewModel  @Inject constructor(
         launch { fetchFilmByName(query = filmName, page = _fragmentState.value.page) }
     }
 
-    fun nextPageFilmList(actualFilmName: String){
+    fun nextPageFilmList(actualFilmName: String) {
         launch {
-            fetchFilmByName(query = actualFilmName, page = _fragmentState.value.page + 1 )
+            fetchFilmByName(query = actualFilmName, page = _fragmentState.value.page + 1)
         }
         _fragmentState.update {
             _fragmentState.value.copy(
@@ -91,9 +97,9 @@ class AllFilmsViewModel  @Inject constructor(
         }
     }
 
-    fun previousPageFilmList(actualFilmName: String){
+    fun previousPageFilmList(actualFilmName: String) {
         launch {
-            fetchFilmByName(query = actualFilmName, page = _fragmentState.value.page - 1 )
+            fetchFilmByName(query = actualFilmName, page = _fragmentState.value.page - 1)
         }
         _fragmentState.update {
             _fragmentState.value.copy(
@@ -106,7 +112,7 @@ class AllFilmsViewModel  @Inject constructor(
         countriesName: Array<String>?,
         premiereCinema: Array<String>?,
         ageRating: Array<String>?
-    ){
+    ) {
         launch {
             fetchFilmsWithFilters(
                 page = _fragmentState.value.page + 1,
@@ -126,7 +132,8 @@ class AllFilmsViewModel  @Inject constructor(
     fun previousPageWithFilterFilms(
         countriesName: Array<String>?,
         premiereCinema: Array<String>?,
-        ageRating: Array<String>?){
+        ageRating: Array<String>?
+    ) {
         launch {
             fetchFilmsWithFilters(
                 page = _fragmentState.value.page - 1,
@@ -146,15 +153,18 @@ class AllFilmsViewModel  @Inject constructor(
     fun updateFilmsWithFiltersList(
         countriesName: Array<String>?,
         premiereCinema: Array<String>?,
-        ageRating: Array<String>?){
+        ageRating: Array<String>?
+    ) {
 
-        launch { fetchFilmsWithFilters(
-            page = 1,
-            limit = 10,
-            countriesName = countriesName,
-            premiereCinema = premiereCinema,
-            ageRating = ageRating
-        )}
+        launch {
+            fetchFilmsWithFilters(
+                page = 1,
+                limit = 10,
+                countriesName = countriesName,
+                premiereCinema = premiereCinema,
+                ageRating = ageRating
+            )
+        }
     }
 
     private suspend fun fetchFilmsWithFilters(
@@ -163,15 +173,17 @@ class AllFilmsViewModel  @Inject constructor(
         countriesName: Array<String>?,
         premiereCinema: Array<String>?,
         ageRating: Array<String>?
-    ){
+    ) {
         withContext(Dispatchers.IO) {
-            val result = filmWithFilterDomainToUiMapper.invoke(filmWithFiltersRepository.getFilmsWithFilters(
-                page = page,
-                limit = limit,
-                countriesName = countriesName,
-                premiereCinema = premiereCinema,
-                ageRating = ageRating
-            ))
+            val result = filmWithFilterDomainToUiMapper.invoke(
+                filmWithFiltersRepository.getFilmsWithFilters(
+                    page = page,
+                    limit = limit,
+                    countriesName = countriesName,
+                    premiereCinema = premiereCinema,
+                    ageRating = ageRating
+                )
+            )
             _fragmentState.update {
                 _fragmentState.value.copy(
                     docs = result.docs,
@@ -184,7 +196,7 @@ class AllFilmsViewModel  @Inject constructor(
         }
     }
 
-    fun navigateToFilmByIdScreen(filmID: Int){
+    fun navigateToFilmByIdScreen(filmID: Int) {
         navigate(filmByIdMediator.getFilmByIdScreenNavData(FilmByIdApiModel(filmID)))
     }
 }

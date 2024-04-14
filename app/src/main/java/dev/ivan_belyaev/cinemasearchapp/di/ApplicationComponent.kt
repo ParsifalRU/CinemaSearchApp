@@ -4,8 +4,6 @@ import dagger.Component
 import dev.ivan_belyaev.cinemasearchapp.app.CinemaSearchApplication
 import dev.ivan_belyaev.core.app.ApplicationProvider
 import dev.ivan_belyaev.core.app.CoreDependenciesProvider
-import dev.ivan_belyaev.core.base.di.ViewModelFactoryModule
-import dev.ivan_belyaev.core.navigation.MediatorsProvider
 import dev.ivan_belyaev.core.network.NetworkProvider
 import dev.ivan_belyaev.core_factory.CoreFactory
 import dev.ivan_belyaev.network.di.NetworkComponent
@@ -18,7 +16,6 @@ import javax.inject.Singleton
         NetworkProvider::class
     ],
     modules = [
-        ViewModelFactoryModule::class,
         ScreensBinding::class,
     ]
 )

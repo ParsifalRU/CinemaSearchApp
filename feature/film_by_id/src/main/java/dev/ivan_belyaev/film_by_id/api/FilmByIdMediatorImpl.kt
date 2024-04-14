@@ -7,7 +7,7 @@ import dev.ivan_belyaev.film_by_id_api.FilmByIdMediator
 import dev.ivan_belyaev.filmbyid.R
 import javax.inject.Inject
 
-class FilmByIdMediatorImpl @Inject constructor(): FilmByIdMediator {
+class FilmByIdMediatorImpl @Inject constructor() : FilmByIdMediator {
 
     override fun getFilmByIdScreenNavData(model: FilmByIdApiModel): NavData {
         return NavData(
@@ -15,5 +15,4 @@ class FilmByIdMediatorImpl @Inject constructor(): FilmByIdMediator {
             bundleOf(FilmByIdMediator.MODEL_ID_EXTRA to model)
         )
     }
-
 }

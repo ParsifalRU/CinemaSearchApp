@@ -15,7 +15,6 @@ import kotlin.coroutines.EmptyCoroutineContext
 
 abstract class BaseViewModel() : ViewModel() {
 
-
     private val coroutineExceptionHandler =
         CoroutineExceptionHandler { coroutineContext, throwable ->
             onCoroutineError(coroutineContext, throwable)

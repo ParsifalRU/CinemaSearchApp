@@ -17,5 +17,4 @@ interface CoreDependenciesModule {
     fun bindSharedPreferencesWrapper(
         sharedPreferencesWrapperImpl: SharedPreferencesWrapperImpl
     ): SharedPreferencesWrapper
-
 }

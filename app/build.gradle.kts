@@ -50,8 +50,8 @@ dependencies {
     implementation(project(":feature:film_by_id"))
     implementation(project(":feature:all_films"))
     //_____________API_MODULES_____________
-    implementation (project(":api:film_by_id_api"))
-    implementation (project(":api:all_films_api"))
+    implementation(project(":api:film_by_id_api"))
+    implementation(project(":api:all_films_api"))
 
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.retrofit)
@@ -63,10 +63,9 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-
     implementation(libs.dagger)
     implementation(libs.javax.inject)
 
     kapt(libs.dagger.compiler)
-    kapt("com.google.dagger:dagger-android-processor:2.47")
+    kapt(libs.google.dagger.android.processor)
 }

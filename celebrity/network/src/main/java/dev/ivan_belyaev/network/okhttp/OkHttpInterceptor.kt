@@ -5,7 +5,7 @@ import okhttp3.Response
 import java.io.IOException
 import javax.inject.Inject
 
-class OkHttpInterceptor @Inject constructor(): Interceptor {
+class OkHttpInterceptor @Inject constructor() : Interceptor {
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {

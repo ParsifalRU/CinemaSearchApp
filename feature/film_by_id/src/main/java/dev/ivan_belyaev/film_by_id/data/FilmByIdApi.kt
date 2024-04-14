@@ -2,6 +2,7 @@ package dev.ivan_belyaev.film_by_id.data
 
 import dev.ivan_belyaev.film_by_id.data.dto.film_info.FilmByIdDto
 import dev.ivan_belyaev.film_by_id.data.dto.film_posters.FilmPostersDto
+import dev.ivan_belyaev.film_by_id.data.dto.film_reviews.FilmReviewsDto
 import dev.ivan_belyaev.network.okhttp.ApiSetting
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -21,4 +22,10 @@ interface FilmByIdApi {
         @Header(ApiSetting.header) token: String,
         @Query("movieId") id: Int
     ): FilmPostersDto
+
+    @GET("/v1.4/review")
+    suspend fun requestReviews(
+        @Header(ApiSetting.header) token: String,
+        @Query("movieId") id: String
+    ): FilmReviewsDto
 }

@@ -1,6 +1,5 @@
 package dev.ivan_belyaev.all_films_api.presentation.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.ivan_belyaev.all_films.R
 import dev.ivan_belyaev.all_films_api.presentation.viewmodel.AllFilmsViewModel
 
-class AllFilmsListAdapter (private val viewModel: AllFilmsViewModel)  : ListAdapter<AllFilmsModel, AllFilmsListAdapter.PostersViewHolder>(AllFilmsDiffUtil){
+class AllFilmsListAdapter(private val viewModel: AllFilmsViewModel) :
+    ListAdapter<AllFilmsModel, AllFilmsListAdapter.PostersViewHolder>(AllFilmsDiffUtil) {
 
     class PostersViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(model: AllFilmsModel) {
             view.findViewById<TextView>(R.id.all_films_textView).text = model.name
-            Log.d("LOGTAG", model.name)
         }
     }
 

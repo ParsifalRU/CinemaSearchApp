@@ -4,4 +4,4 @@ import java.io.Serializable
 
 data class FilmByIdApiModel(
     val filmId: Int
-): Serializable
+) : Serializable

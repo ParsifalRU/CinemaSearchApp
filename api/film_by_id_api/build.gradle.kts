@@ -37,5 +37,4 @@ dependencies {
     implementation(project(":celebrity:core"))
 
     implementation(libs.androidx.core.ktx)
-
 }

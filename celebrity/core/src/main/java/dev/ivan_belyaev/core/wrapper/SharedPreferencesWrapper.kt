@@ -2,7 +2,7 @@ package dev.ivan_belyaev.core.wrapper
 
 import android.content.SharedPreferences
 
-interface SharedPreferencesWrapper  {
+interface SharedPreferencesWrapper {
 
     fun get(previousSearchList: List<String>): SharedPreferences?
 

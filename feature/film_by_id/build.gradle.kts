@@ -46,24 +46,22 @@ dependencies {
     implementation(project(":api:film_by_id_api"))
     implementation(project(":api:all_films_api"))
 
-    implementation(libs.retrofit)
-    implementation(libs.retrofit2.converter.gson2)
-    implementation ("com.squareup.okhttp3:okhttp:3.14.9")
-    implementation ("androidx.appcompat:appcompat:1.6.1")
-
-    implementation("com.github.bumptech.glide:glide:4.15.1")
-    implementation(libs.dagger)
     api(libs.androidx.lifecycle.viewmodel.ktx)
     api(libs.androidx.lifecycle.runtime.ktx)
+
+    kapt(libs.dagger.compiler)
+
+    implementation(libs.retrofit)
+    implementation(libs.retrofit2.converter.gson2)
+    implementation("com.squareup.okhttp3:okhttp:3.14.9")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    implementation(libs.dagger)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-    kapt(libs.dagger.compiler)
     implementation(libs.androidx.core.ktx)
     implementation("androidx.fragment:fragment-ktx:1.6.2")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }

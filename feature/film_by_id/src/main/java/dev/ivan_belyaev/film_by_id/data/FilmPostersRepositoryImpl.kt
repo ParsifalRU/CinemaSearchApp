@@ -1,6 +1,5 @@
-package dev.ivan_belyaev.film_by_id.data.dto
+package dev.ivan_belyaev.film_by_id.data
 
-import dev.ivan_belyaev.film_by_id.data.FilmByIdApi
 import dev.ivan_belyaev.film_by_id.data.mapper.FilmPostersToDomainMapper
 import dev.ivan_belyaev.film_by_id.domain.FilmPostersRepository
 import dev.ivan_belyaev.film_by_id.domain.model.PostersFilmModel

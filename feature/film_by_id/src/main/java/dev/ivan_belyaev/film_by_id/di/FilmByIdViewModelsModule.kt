@@ -8,7 +8,7 @@ import dev.ivan_belyaev.core.base.di.ViewModelKey
 import dev.ivan_belyaev.film_by_id.presentation.FilmByIdViewModel
 
 @Module
-interface FilmByIdViewModelsModule  {
+interface FilmByIdViewModelsModule {
 
     @Binds
     @IntoMap

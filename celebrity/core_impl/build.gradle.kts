@@ -42,10 +42,11 @@ dependencies {
     implementation(libs.retrofit2.converter.gson2)
     implementation(libs.logging.interceptor)
     implementation(libs.dagger)
-    api(libs.androidx.lifecycle.viewmodel.ktx)
-    api(libs.androidx.lifecycle.runtime.ktx)
-    kapt(libs.dagger.compiler)
-    kapt("com.google.dagger:dagger-android-processor:2.47")
     implementation(libs.androidx.core.ktx)
 
+    api(libs.androidx.lifecycle.viewmodel.ktx)
+    api(libs.androidx.lifecycle.runtime.ktx)
+
+    kapt(libs.dagger.compiler)
+    kapt("com.google.dagger:dagger-android-processor:2.47")
 }

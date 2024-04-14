@@ -21,7 +21,11 @@ class SharedPreferencesWrapperImpl
         editor?.apply()
     }
 
-    override fun getValue(previousSearchList: List<String>, key: String, defaultValue: String): List<String>? {
+    override fun getValue(
+        previousSearchList: List<String>,
+        key: String,
+        defaultValue: String
+    ): List<String>? {
         val sharedPreferences = get(previousSearchList)
         val savedString = sharedPreferences?.getString(key, defaultValue)
         return if (!savedString.isNullOrEmpty()) {

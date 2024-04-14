@@ -21,7 +21,10 @@ interface FilmByIdComponent {
 
     companion object {
 
-        fun init(applicationProvider: ApplicationProvider, filmByIdApiModel: FilmByIdApiModel): FilmByIdComponent {
+        fun init(
+            applicationProvider: ApplicationProvider,
+            filmByIdApiModel: FilmByIdApiModel
+        ): FilmByIdComponent {
             return DaggerFilmByIdComponent.factory()
                 .create(applicationProvider, filmByIdApiModel)
         }

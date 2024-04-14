@@ -8,6 +8,6 @@
         android:id="@+id/fragment_film_by_id"
         android:name="dev.ivan_belyaev.film_by_id.presentation.FilmByIdFragment"
         android:label="film_by_id"
-        tools:layout="@layout/fragment_film_by_id"/>
+        tools:layout="@layout/fragment_film_by_id" />
 
 </navigation>

@@ -5,7 +5,7 @@ import dev.ivan_belyaev.film_by_id.data.dto.film_info.PosterModel
 import dev.ivan_belyaev.film_by_id.data.dto.film_info.RatingModel
 import dev.ivan_belyaev.film_by_id.data.dto.film_info.VotesModel
 
-data class FilmByIdModel (
+data class FilmByIdModel(
     @SerializedName("name")
     val name: String,
     @SerializedName("description")

@@ -12,7 +12,6 @@ import javax.inject.Singleton
     ],
     modules = [
         ScreensBinding::class,
-        MainActivityViewModelsModule::class,
     ]
 )
 internal interface MainActivityComponent {

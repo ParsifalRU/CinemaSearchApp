@@ -36,15 +36,18 @@ android {
 
 dependencies {
     implementation(project(":celebrity:core"))
-    implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3")
-    implementation(libs.dagger)
+
     kapt(libs.dagger.compiler)
-    implementation ("com.google.dagger:dagger-android:2.47")
-    annotationProcessor ("com.google.dagger:dagger-android-processor:2.47")
-    annotationProcessor ("com.google.dagger:dagger-compiler:2.47")
-    implementation ("com.google.dagger:dagger-android-support:2.47")
+
+    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3")
+    implementation(libs.dagger)
+
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.javax.inject)
     implementation(libs.retrofit2.converter.gson2)
     implementation(libs.retrofit)
+    implementation("com.google.dagger:dagger-android:2.47")
+    implementation("com.google.dagger:dagger-android-support:2.47")
+    annotationProcessor("com.google.dagger:dagger-android-processor:2.47")
+    annotationProcessor("com.google.dagger:dagger-compiler:2.47")
 }

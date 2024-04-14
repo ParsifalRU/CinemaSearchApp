@@ -6,8 +6,8 @@ import android.view.View
 fun View.setDebouncedClickListener(
     delay: Long = 1500L,
     onClickAction: () -> Unit
-){
-    setOnClickListener(getDebouncedClickListener(delay, onClickAction ))
+) {
+    setOnClickListener(getDebouncedClickListener(delay, onClickAction))
 }
 
 private fun getDebouncedClickListener(

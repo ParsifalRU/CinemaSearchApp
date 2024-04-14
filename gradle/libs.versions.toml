@@ -3,6 +3,7 @@ androidx-junit = "1.1.5"
 appcompat = "1.6.1"
 constraintlayout = "2.1.4"
 core-ktx = "1.12.0"
+dagger-android-processor = "2.47"
 espresso-core = "3.5.1"
 javax-inject = "1"
 junit = "4.13.2"
@@ -30,6 +31,7 @@ androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtim
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle-viewmodel-ktx" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation-ui-ktx" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation-fragment-ktx" }
+google-dagger-android-processor = { module = "com.google.dagger:dagger-android-processor", version.ref = "dagger-android-processor" }
 retrofit2-converter-gson2 = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 javax-inject = { module = "javax.inject:javax.inject", version.ref = "javax-inject" }
 junit = { module = "junit:junit", version.ref = "junit" }

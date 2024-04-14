@@ -12,7 +12,7 @@ import dev.ivan_belyaev.core.resources.AppResources
 import javax.inject.Inject
 
 class AppResourcesImpl @Inject constructor(
-    private val application : Application
+    private val application: Application
 ) : AppResources {
 
     private val resources = application.resources
@@ -20,6 +20,7 @@ class AppResourcesImpl @Inject constructor(
     override fun getString(@StringRes stringId: Int): String {
         return resources.getString(stringId)
     }
+
     override fun getString(@StringRes stringId: Int, vararg strings: String): String {
         return resources.getString(stringId, *strings)
     }
@@ -43,14 +44,22 @@ class AppResourcesImpl @Inject constructor(
         return if (resourceName.isBlank()) {
             defaultValue
         } else {
-            val resId = resources.getIdentifier(resourceName, "string", application.applicationContext.packageName)
+            val resId = resources.getIdentifier(
+                resourceName,
+                "string",
+                application.applicationContext.packageName
+            )
             if (resId != 0) resId else defaultValue
         }
     }
 
     @RawRes
     fun getRawResIdByName(resourceName: String): Int {
-        return resources.getIdentifier(resourceName, "raw", application.applicationContext.packageName)
+        return resources.getIdentifier(
+            resourceName,
+            "raw",
+            application.applicationContext.packageName
+        )
     }
 
     override fun getDrawable(@DrawableRes resId: Int): Drawable? {

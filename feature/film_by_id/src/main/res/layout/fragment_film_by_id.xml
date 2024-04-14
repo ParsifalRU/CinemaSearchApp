@@ -13,7 +13,7 @@
             android:layout_margin="18dp"
             android:src="@drawable/drawable_downloading"
             android:visibility="gone"
-            android:id="@+id/downloadImageView"/>
+            android:id="@+id/downloadImageView" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/rootView"
@@ -51,7 +51,7 @@
                 android:layout_marginBottom="8dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewPoster"/>
+                app:layout_constraintTop_toBottomOf="@+id/imageViewPoster" />
 
             <TextView
                 android:id="@+id/textViewDescription"
@@ -60,7 +60,7 @@
                 android:text="Описание отсутствуют"
                 android:layout_marginBottom="8dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewDescriptionTitle"/>
+                app:layout_constraintTop_toBottomOf="@+id/textViewDescriptionTitle" />
 
             <!-- Рейтинг -->
             <TextView
@@ -71,7 +71,7 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewDescription"/>
+                app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
 
             <TextView
                 android:id="@+id/textViewKpRating"
@@ -80,7 +80,7 @@
                 android:text="kp:"
                 android:layout_marginBottom="8dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewRating"/>
+                app:layout_constraintTop_toBottomOf="@+id/textViewRating" />
 
             <TextView
                 android:id="@+id/textViewKpRatingText"
@@ -150,7 +150,7 @@
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewRussianFilmCriticsRatingText"/>
+                app:layout_constraintTop_toBottomOf="@+id/textViewRussianFilmCriticsRatingText" />
 
             <TextView
                 android:id="@+id/textViewReviewsTitle"
@@ -161,7 +161,7 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerViewPosters"/>
+                app:layout_constraintTop_toBottomOf="@+id/recyclerViewPosters" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewReviews"
@@ -169,7 +169,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewReviewsTitle"/>
+                app:layout_constraintTop_toBottomOf="@+id/textViewReviewsTitle" />
 
             <Button
                 android:id="@+id/buttonBack"
@@ -178,7 +178,7 @@
                 android:text="Назад"
                 android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerViewReviews"/>
+                app:layout_constraintTop_toBottomOf="@+id/recyclerViewReviews" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </ScrollView>

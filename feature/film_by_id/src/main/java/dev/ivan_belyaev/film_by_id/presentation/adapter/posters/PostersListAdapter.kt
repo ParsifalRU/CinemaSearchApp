@@ -1,4 +1,4 @@
-package dev.ivan_belyaev.film_by_id.presentation.adapter
+package dev.ivan_belyaev.film_by_id.presentation.adapter.posters
 
 import android.content.Context
 import android.util.Log
@@ -12,7 +12,8 @@ import com.bumptech.glide.Glide
 import dev.ivan_belyaev.filmbyid.R
 
 
-class PostersListAdapter : ListAdapter<PostersModel, PostersListAdapter.PostersViewHolder>(PostersDiffUtil){
+class PostersListAdapter :
+    ListAdapter<PostersModel, PostersListAdapter.PostersViewHolder>(PostersDiffUtil) {
 
     class PostersViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
@@ -25,13 +26,13 @@ class PostersListAdapter : ListAdapter<PostersModel, PostersListAdapter.PostersV
         }
 
         private fun setImage(context: Context, url: String, imageView: ImageView) {
-                Glide
-                    .with(context)
-                    .load(url)
-                    .placeholder(R.drawable.drawable_downloading)
-                    .error(R.drawable.drawable_error)
-                    .centerCrop()
-                    .into(imageView)
+            Glide
+                .with(context)
+                .load(url)
+                .placeholder(R.drawable.drawable_downloading)
+                .error(R.drawable.drawable_error)
+                .centerCrop()
+                .into(imageView)
         }
     }
 

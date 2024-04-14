@@ -39,13 +39,15 @@ android {
 
 dependencies {
 
-    implementation(libs.androidx.navigation.fragment.ktx)
     kapt(libs.dagger.compiler)
+    
+    api(libs.androidx.lifecycle.viewmodel.ktx)
+
+    implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.retrofit2.converter.gson2)
     implementation(libs.retrofit)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.dagger)
-    api(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.dagger.compiler)
     implementation(libs.androidx.core.ktx)
     implementation(libs.material)

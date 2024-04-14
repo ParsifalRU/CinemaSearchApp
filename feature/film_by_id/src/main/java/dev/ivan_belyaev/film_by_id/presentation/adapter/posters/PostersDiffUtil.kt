@@ -1,8 +1,8 @@
-package dev.ivan_belyaev.film_by_id.presentation.adapter
+package dev.ivan_belyaev.film_by_id.presentation.adapter.posters
 
 import androidx.recyclerview.widget.DiffUtil
 
-object PostersDiffUtil: DiffUtil.ItemCallback<PostersModel>() {
+object PostersDiffUtil : DiffUtil.ItemCallback<PostersModel>() {
     override fun areItemsTheSame(oldItem: PostersModel, newItem: PostersModel): Boolean {
         return oldItem.id == newItem.id
     }

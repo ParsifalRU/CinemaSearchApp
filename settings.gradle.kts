@@ -13,8 +13,9 @@ dependencyResolutionManagement {
         maven { url = uri("https://www.jitpack.io" ) }
     }
 }
-
+//PROJECT
 rootProject.name = "CinemaSearchApp"
+//APP
 include(":app")
 //FOLDERS
 include(":api")

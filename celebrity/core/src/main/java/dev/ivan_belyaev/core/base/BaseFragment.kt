@@ -1,7 +1,6 @@
 package dev.ivan_belyaev.core.base
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,18 +50,13 @@ abstract class BaseFragment<VM : BaseViewModel, VB : ViewBinding>(
         return binding.root
     }
 
-    /**
-     * Intended for initializing dagger component.
-     */
     protected abstract fun inject(applicationProvider: ApplicationProvider)
-
 
     fun <T> Flow<T>.observe(action: suspend (T) -> Unit) {
         this.flowWithLifecycle(viewLifecycleOwner.lifecycle)
             .onEach(action)
             .launchIn(lifecycleScope)
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
@@ -77,25 +71,22 @@ abstract class BaseFragment<VM : BaseViewModel, VB : ViewBinding>(
     private fun observeNavigation() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.navigation.collect { event ->
-               event.getContentIfNotHandled()?.let { navigationCommand ->
+                event.getContentIfNotHandled()?.let { navigationCommand ->
                     handleNavigation(navigationCommand)
                 }
             }
         }
     }
+
     private fun handleNavigation(navCommand: NavigationCommand) {
-        Log.d("LOGTAG", "Handling navigation command: $navCommand")
         when (navCommand) {
             is NavigationCommand.ToDirection -> {
-                Log.d("LOGTAG", "Navigating to destination: ${navCommand.navData.resId}")
                 findNavController().navigate(
                     resId = navCommand.navData.resId,
                     args = navCommand.navData.args
                 )
             }
-            is NavigationCommand.Back ->
-            {
-                Log.d("LOGTAG", "Navigating back")
+            is NavigationCommand.Back -> {
                 findNavController().navigateUp()
             }
         }

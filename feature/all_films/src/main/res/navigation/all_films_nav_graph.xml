@@ -8,5 +8,5 @@
         android:id="@+id/fragment_all_films_id"
         android:name="dev.ivan_belyaev.all_films_api.presentation.fragment.AllFilmsFragment"
         android:label="all_films"
-        tools:layout="@layout/fragment_all_films"/>
+        tools:layout="@layout/fragment_all_films" />
 </navigation>
