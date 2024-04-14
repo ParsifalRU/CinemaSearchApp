@@ -28,8 +28,10 @@ class AllFilmsListAdapter(private val viewModel: AllFilmsViewModel) :
     override fun onBindViewHolder(holder: PostersViewHolder, position: Int) {
         val model = getItem(position)
         holder.bind(model)
-        holder.itemView.setOnClickListener {
-            viewModel.navigateToFilmByIdScreen(model.id)
+        if (model.name != ""){
+            holder.itemView.setOnClickListener {
+                viewModel.navigateToFilmByIdScreen(model.id)
+            }
         }
     }
 }

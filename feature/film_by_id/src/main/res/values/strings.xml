@@ -1,4 +1,12 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="film_decription">Описание фильма:</string>
+    <string name="descrition_absent">Описание отсутствуют</string>
+    <string name="rating">Рейтинг:</string>
+    <string name="kp">kp:</string>
+    <string name="imdb">imdb:</string>
+    <string name="film_critics">filmCritics:</string>
+    <string name="ru_film_crititcs">ruFilmCritics:</string>
+    <string name="review">Отзывы</string>
+    <string name="back">Назад</string>
 </resources>

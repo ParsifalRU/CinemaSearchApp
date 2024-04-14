@@ -1,4 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="age_rating">Возрастной рейтинг (12, !18, 12-18)</string>
+    <string name="country_names">Страна (Россия, Сша)</string>
+    <string name="year_date">Год (2000, 2002-2020)</string>
+    <string name="apply">Применить</string>
+    <string name="hide">Скрыть</string>
+    <string name="filters">filters</string>
+    <string name="next_page">Следующая страница</string>
+    <string name="previous_page">Предыдущая страница</string>
+    <string name="one_number">1</string>
+    <string name="ten_number">10</string>
+    <string name="two_with_dot_number">..2..</string>
 </resources>

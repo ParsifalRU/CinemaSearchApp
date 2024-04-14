@@ -42,7 +42,6 @@ class AllFilmsFragment :
     private fun renderAllNamesState(namesState: FilmByNameUiModel) {
         binding.currentPageTextView.text = " .. ${namesState.page} .. "
         binding.endPageTextView.text = namesState.pages.toString()
-
         val arrayList = ArrayList<AllFilmsModel>()
         for (i in 0..namesState.docs.lastIndex) {
             arrayList.add(

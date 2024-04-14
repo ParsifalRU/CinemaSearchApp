@@ -21,7 +21,7 @@
         <TextView
             android:id="@+id/filterTextView"
             android:layout_margin="5dp"
-            android:text="filters"
+            android:text="@string/filters"
             android:textStyle="bold"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
@@ -46,15 +46,6 @@
             app:layout_constraintTop_toBottomOf="@+id/filterTextView"
             android:visibility="gone" />
 
-        <!--        <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewHistory"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:visibility="gone"
-                    android:background="@android:color/black"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/searchView"/>-->
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewNames"
             android:layout_width="match_parent"
@@ -76,7 +67,7 @@
             android:id="@+id/nextPageTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Следующая страница"
+            android:text="@string/next_page"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginStart="8dp"
-            android:text="Предыдущая страница"
+            android:text="@string/previous_page"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/separatorLineViewDown" />
 
@@ -98,7 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="1"
+            android:text="@string/one_number"
             app:layout_constraintEnd_toStartOf="@+id/currentPageTextView"
             app:layout_constraintTop_toBottomOf="@+id/previousPageTextView" />
 
@@ -107,7 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="10"
+            android:text="@string/ten_number"
             app:layout_constraintStart_toEndOf="@+id/currentPageTextView"
             app:layout_constraintTop_toBottomOf="@+id/previousPageTextView" />
 
@@ -116,7 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="..2.."
+            android:text="@string/two_with_dot_number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/previousPageTextView" />

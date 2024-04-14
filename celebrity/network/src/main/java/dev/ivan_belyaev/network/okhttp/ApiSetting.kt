@@ -4,6 +4,6 @@ object ApiSetting {
 
     const val header = "X-API-KEY"
 
-    //YOUR TOKEN
+    //YOUR TOKEN WF76VQQ-HQB4P5G-JFJH8DF-CRKDP1M
     const val token = ""
 }
